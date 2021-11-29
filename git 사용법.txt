@@ -1,0 +1,42 @@
+git 명령어
+
+git status : 상태
+git add . : 추가/수정한 부분 저장
+git commit -m "메세지" : 로그 저장
+git reset --hard/--mixed/--soft log번호 : hard는 로그 내용 및 파일까지 삭제 / mixed는 add전으로 이동 / soft는 commit 전상태로 이동
+git reflog : 이전 커밋한 내용들 보기 (커밋 했었으면 삭제한 내용도 나옴) 돌아가고 싶은 로그 보고 해당 reset을 이용해서 해당 로그로 이동가능
+git commit --amend -m "수정할메세지" :  현재(최종) 로그 메세지 잘못 저장했으면 수정해주는 법 
+
+
+git branch 브런치명 브런치명 생성
+git checkout 브런치명 해당 브런치로 변경
+git checkout -b 브런치명 브런치명 생성과 동시에 해당브런치로 변경
+
+
+---
+Fast-forward Merge 1개의 브런치만 수정했을때 사용
+메인 브런치에서 git merge 브런치명 입력시 해당 브런치와 메인브런치가 머지됨 
+
+3-way Merge 2개의 브런치 모두 수정되었을 때 사용
+메인 브런치와, 추가 브런치가 모두 변경 후 commit 하였을 때 사용 발동되며, fast-forward merge와 마찬가지로
+git merge 브런치명 입력시 해당 브런치와 메인브런치가 머지됨 / 메세지 나올시 :wq 입력시 저장후 나가기, :q입력시 그냥  나가기가 됨
+
+merge시 동일한 부분 수정하면 충돌(CONFLICT)이 날수 있다. 충돌나게 되면, 깃에서 어떤 것으로 할껀지 선택하라고 하는데, 
+사용자가해당 부분 직접 수정 후 다시 add > commit까지 해야함
+
+----
+git rebase -i HEAD ~3 : 브랜치 정리할때 사용 head부터 3번째 줄까지 
+-> vi 에디터 -> i 입력모드 -> 로그 변경 ->exe -> :wq 저장하고 나오기
+pick : 선택 그대로 두거나, s 로 변경한 파일과 사용시 s파일들을 pick으로 합침
+s : squash 찌그러트리다. pick으로 합침
+d : drop 삭제
+r : reward 이름변경
+
+--github
+git remote add origin 깃헙주소
+git remote -v 연결 상태 확인 / git ls-remote 라는 명령어를 사용해도 된다.
+
+git push origin master 푸쉬
+
+git remote rm origin 잘못 연결했을시 기존연결 삭제 하는법
+
