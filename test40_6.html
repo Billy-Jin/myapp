@@ -27,15 +27,21 @@
 <body>
     <fieldset>
         <legend>event propagation</legend>
-        <input type="button" id="target" value="target">
+        <input type="button" id="target" value="target"><a id="atag" href="http://www.naver.com">네이버</a>
     </fieldset>
     <script>
-        function handler(event) {
-            var phases = ['capturing', 'target', 'bubbling']
-            console.log(event.target.nodeName, this.nodeName, phases[event.eventPhase - 1]);
-            console.log(event.currentTarget);
-        }
-        document.getElementById('target').addEventListener('click', handler, true);
+        
+
+        // function handler(event) {
+        //     var phases = ['capturing', 'target', 'bubbling']
+        //     event.preventDefault(); //
+        //     console.log(event.target.nodeName, this.nodeName, phases[event.eventPhase - 1]);
+        //     console.log(event.target);
+        //     console.log(event.currentTarget);
+        // }
+
+
+        // document.getElementById('target').addEventListener('click', handler, true);
         // document.querySelector('fieldset').addEventListener('click', handler, true);
         // document.querySelector('body').addEventListener('click', handler, true);
         // document.querySelector('html').addEventListener('click', handler, true);
@@ -45,19 +51,19 @@
         // document.querySelector('body').addEventListener('click', handler, false);
         // document.querySelector('html').addEventListener('click', handler, false);
 
-        // function handler(event) {
-        //     var phases = ['capturing', 'target', 'bubbling']
-        //     console.log(event.target.nodeName, this.nodeName, phases[event.eventPhase - 1]);
-        // }
-        // function stophandler(event) {
-        //     var phases = ['capturing', 'target', 'bubbling']
-        //     console.log(event.target.nodeName, this.nodeName, phases[event.eventPhase - 1]);
-        //     event.stopPropagation();
-        // }
-        // document.getElementById('target').addEventListener('click', handler, false);
-        // document.querySelector('fieldset').addEventListener('click', handler, false);
-        // document.querySelector('body').addEventListener('click', stophandler, false);
-        // document.querySelector('html').addEventListener('click', handler, false);
+        function handler(event) {
+            var phases = ['capturing', 'target', 'bubbling']
+            console.log(event.target.nodeName, this.nodeName, phases[event.eventPhase - 1]);
+        }
+        function stophandler(event) {
+            var phases = ['capturing', 'target', 'bubbling']
+            console.log(event.target.nodeName, this.nodeName, phases[event.eventPhase - 1]);
+            event.stopPropagation();
+        }
+        document.getElementById('target').addEventListener('click', handler, false);
+        document.querySelector('fieldset').addEventListener('click', handler, false);
+        document.querySelector('body').addEventListener('click', stophandler, false);
+        document.querySelector('html').addEventListener('click', handler, false);
 
         // https://opentutorials.org/module/904/6768
 
