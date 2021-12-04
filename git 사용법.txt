@@ -16,6 +16,8 @@ git checkout -b 브런치명 브런치명 생성과 동시에 해당브런치로
 ---
 Fast-forward Merge 1개의 브런치만 수정했을때 사용
 메인 브런치에서 git merge 브런치명 입력시 해당 브런치와 메인브런치가 머지됨 
+Fast-forward Merge에서는 로그가 안남기 때문에 로그를 남기기위해 
+git merge --no-ff 대상브런치  / :wq로 저장 하여 로그를 남겨야 한다.
 
 3-way Merge 2개의 브런치 모두 수정되었을 때 사용
 메인 브런치와, 추가 브런치가 모두 변경 후 commit 하였을 때 사용 발동되며, fast-forward merge와 마찬가지로
@@ -40,3 +42,42 @@ git push origin master 푸쉬
 
 git remote rm origin 잘못 연결했을시 기존연결 삭제 하는법
 
+-- 
+git fetch origin : 깃 허브 내용이 로컬 remote에 복제 된다
+merge : 로컬 remote내용을 로컬 저장소로 복제해준다.
+
+git pull origin 브랜치명 : git fetch origin + merge기능을 같이 해준다.
+
+
+---
+git repasitory 만들때 readme.md를 클릭하면 브랜치가 하나 만들어진다.
+readme.md 체크시
+git init -> Readme.md 파일생성 -> add . -> commit -> git push origin main (main 브랜치생성)
+readme.md 미체크시
+git init 만 실행됨
+
+---
+merge후 필요없어진 branch는 정리 해야 된다. 단 수정해야 될수 있으니 바로 삭제가 아니라 몇일뒤에 하는게 좋다.
+
+--
+git tag 남길태기
+git tag -n  / 태그 확인 방법
+태그도 같이 올릴때
+git push --tags origin 브런치명
+
+
+--
+협업시 강제로 올려야 할때는
+git push -f origin 브런치명 
+
+--깃허브 브런치 삭제
+git push --delete origin 브런치명
+
+--- 
+Draft pull request 코드리뷰 요청 (미완성 상태)
+Create pull request 완성된 코드 머지 요청
+
+---설정 확인
+git config --list 
+git config --global user.name "홍길동"
+git config --global user.email "support@webisfree.com"
