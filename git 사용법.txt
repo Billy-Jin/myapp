@@ -28,7 +28,7 @@ merge시 동일한 부분 수정하면 충돌(CONFLICT)이 날수 있다. 충돌
 
 ----
 git rebase -i HEAD ~3 : 브랜치 정리할때 사용 head부터 3번째 줄까지 
--> vi 에디터 -> i 입력모드 -> 로그 변경 ->exe -> :wq 저장하고 나오기
+-> vi 에디터 -> i 눌러서 입력모드로 변경 -> 로그 변경 ->exe -> :wq 저장하고 나오기
 pick : 선택 그대로 두거나, s 로 변경한 파일과 사용시 s파일들을 pick으로 합침
 s : squash 찌그러트리다. pick으로 합침
 d : drop 삭제
@@ -81,3 +81,18 @@ Create pull request 완성된 코드 머지 요청
 git config --list 
 git config --global user.name "홍길동"
 git config --global user.email "support@webisfree.com"
+
+
+---순서대로 머지 하는법 (중요!! rebase후 merge)
+깃 머지는 머지 진행순서와 별개로 log 생성 순서(=커밋한 순서)대로 정렬이 된다. 이를 방지 하기 위해서는 rebase 진행 후 merge 진행을 해야된다.
+master / 첫번째 생성 branch / 두번째 생성 branch 가 있고, 두번째 생성 브랜치 부터 머지 후 첫번째 생성 브랜치를 머지 한다고 한다면,
+master 에서 git merge --no-ff 두번째 생성 branch 로 머지 진행 후, git checkout 첫번째 생성 branch로 이동 한다.
+첫번째 생성 브랜치에서 git rebase master를 입력하게 되면
+두번째 생성한 branch까지 머지 된 log가 첫번째 생성 branch에서 생성한 log보다 앞서 저장되게된다.  
+다시 master로 돌아가서 git merge --no-ff 첫번째 생성 branch 를 입력하게 되면 merge순서대로 log가 저장된다.
+
+
+--자격증명
+git config --global --list 상태 확인
+git config --global user.name 변경할 이름
+git config --global user.email 변경할 이메일 
