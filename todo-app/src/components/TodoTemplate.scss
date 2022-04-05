@@ -1,0 +1,31 @@
+.TodoTemplate {
+  width: 512px;
+  margin-left: auto; //우로 밀착
+  margin-right: auto; //좌로 밀착
+  //margin-left: auto;랑 같이 사용하면 중앙 정렬됨
+  margin-top: 6rem;
+  border-radius: 4px;
+  overflow: hidden; // 삐져나오는 애들 숨김처리
+
+  .app-title {
+    background-color: #22b8cf;
+    color: white;
+    height: 4rem;
+    font-size: 1.5rem;
+    display: flex; // justify-content 옵션을 사용하려면 필요
+    align-items: center; // 세로 중앙 정렬, start 위로 정렬,  end 아래로 정렬
+    justify-content: center; // 가로 중앙정렬, left 좌로정렬, right 우로 정렬
+    /*
+    flex-start: 요소들을 컨테이너의 왼쪽으로 정렬합니다.
+flex-end: 요소들을 컨테이너의 오른쪽으로 정렬합니다.
+center: 요소들을 컨테이너의 가운데로 정렬합니다.
+space-between: 요소들 사이에 동일한 간격을 둡니다.
+space-around: 요소들 주위에 동일한 간격을 둡니다.
+예를 들어, justify-content: flex-end;는 개구리를 오른쪽으로 이동시킵니다.
+    */
+  }
+
+  .content {
+    background: white;
+  }
+}
